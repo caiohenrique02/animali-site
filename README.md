@@ -62,7 +62,7 @@ veja pendências abaixo).
 - [ ] **Fotos reais** — todas as imagens hoje são de banco de imagens, incluindo as fotos da equipe
 - [ ] **Especialidade de cada veterinária** — só temos os nomes, não a especialidade de cada uma
 - [ ] **Depoimentos reais** — os atuais são exemplos (a Animali tem destaque "Clientes" no Instagram com material real)
-- [ ] **Códigos de reel reais** — nenhum foi levantado; os cards de vídeo hoje só abrem o Instagram
+- [ ] **Códigos de reel reais** — 2 dos 4 cards já usam reels reais (`DaiUnSnhwIO`, `DaTR800xZbY`); os outros 2 ainda só abrem o Instagram
 - [ ] **Domínio do site** — usamos `animalicg.com.br` como placeholder no canonical/schema; confirmar domínio real
 - [ ] **Respostas do FAQ** — confirmar preços, formas de pagamento e regras
 

@@ -59,19 +59,19 @@ const CAMPANHAS = [
    "Copiar link". Do link `instagram.com/reel/DcI_3EBRs50/`, o código
    é o `DcI_3EBRs50` (pode ignorar o que vem depois do `?`).
 
-   ⚠️ Nenhum código de reel real foi levantado ainda — todos os cards
-   abaixo usam `url` e abrem o perfil de reels do Instagram. Trocar por
-   `reel: 'codigo'` assim que o cliente indicar os vídeos que quer.
+   ⚠️ Os 2 primeiros cards já usam reels reais. Os 2 últimos ainda usam
+   `url` e abrem o perfil de reels do Instagram — trocar por
+   `reel: 'codigo'` assim que tiver os vídeos.
 ------------------------------------------- */
 const VIDEOS = [
   {
-    url: 'https://www.instagram.com/animalicg/reels/',
+    reel: 'DaiUnSnhwIO',
     capa: 'https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?auto=format&fit=crop&w=600&q=70',
     titulo: 'Cuidado especializado',
     legenda: 'Conheça a nossa equipe',
   },
   {
-    url: 'https://www.instagram.com/animalicg/reels/',
+    reel: 'DaTR800xZbY',
     capa: 'https://images.unsplash.com/photo-1591946614720-90a587da4a36?auto=format&fit=crop&w=600&q=70',
     titulo: 'Coleta de sangue',
     legenda: 'Com o mínimo de estresse',
