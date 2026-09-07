@@ -3,15 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animali Especialidades Veterinárias | Clínica e Pet Shop em Campina Grande</title>
-<meta name="description" content="Animali Especialidades Veterinárias em Campina Grande: consultas com especialistas, cirurgias, reprodução animal, exames e petshop. Bairro Jardim Tavares, atendimento de segunda a sábado.">
-<meta name="keywords" content="clínica veterinária campina grande, pet shop jardim tavares, veterinário especialista campina grande, cirurgia veterinária campina grande, reprodução animal campina grande, exames veterinários campina grande">
-<link rel="canonical" href="https://animalicg.com.br/">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Animali Especialidades Veterinárias | Campina Grande">
-<meta property="og:description" content="Consultas com especialistas, cirurgias, reprodução animal, exames e petshop. Clínica e Pet Shop no Jardim Tavares, Campina Grande.">
-<meta property="og:locale" content="pt_BR">
+<title>Animali — Versão 3 (Vibrante) | Clínica e Pet Shop em Campina Grande</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,35 +44,9 @@ tailwind.config = {
   .selo-fita { transform: rotate(-3deg); }
   .selo-fita:nth-child(even) { transform: rotate(2.5deg); }
   .patinha { background-image: radial-gradient(circle at 12% 20%, rgba(255,255,255,.35) 0 3px, transparent 4px), radial-gradient(circle at 70% 65%, rgba(255,255,255,.25) 0 4px, transparent 5px); background-size: 120px 120px; }
-  .video-card video { background: linear-gradient(160deg, #7C2470, #239186); }
+  .video-card video { background: #1c0f21; }
   .botao-som { transition: background .2s, transform .2s; }
   .botao-som:active { transform: scale(.9); }
-
-  /* selo "tocando" só aparece enquanto o vídeo está de fato rodando */
-  .selo-tocando { opacity: 0; transition: opacity .25s; }
-  .video-card video:not(.pausado) ~ .selo-tocando { opacity: 1; }
-
-  /* tinta leve nas fotos de banco de imagem, pra puxarem pra paleta da marca */
-  .tinta { mix-blend-mode: multiply; opacity: .16; pointer-events: none; }
-
-  /* cards ganham leve elevação no hover — sensação mais premium */
-  .eleva { transition: transform .25s cubic-bezier(.2,.8,.3,1), box-shadow .25s; }
-  .eleva:hover { transform: translateY(-6px); }
-
-  /* selos com rotação de sticker voltam a esticar no hover */
-  .selo-fita { transition: transform .3s cubic-bezier(.2,.8,.3,1); }
-  .selo-fita:hover { transform: translateY(-6px) rotate(0deg); }
-
-  /* leve atraso em cascata nos grids, pra entrada não ser tudo de uma vez */
-  .grid > .aparece:nth-child(2) { transition-delay: .08s; }
-  .grid > .aparece:nth-child(3) { transition-delay: .16s; }
-  .grid > .aparece:nth-child(4) { transition-delay: .24s; }
-  .grid > .aparece:nth-child(5) { transition-delay: .32s; }
-  .grid > .aparece:nth-child(6) { transition-delay: .4s; }
-
-  /* cabeçalho ganha sombra só depois de rolar a página */
-  header { transition: box-shadow .25s; }
-  header.rolou { box-shadow: 0 8px 24px -16px rgba(61,34,71,.35); }
 </style>
 </head>
 <body class="font-sans text-ameixa antialiased">
@@ -185,7 +151,7 @@ tailwind.config = {
 
     <div class="relative">
       <div class="relative grupo-foto foto rounded-[2.5rem] overflow-hidden h-[380px] md:h-[520px] shadow-alta border-[6px] border-white rotate-1">
-        <video class="w-full h-full object-cover" src="/assets/videos/cuidado-especializado.mp4" autoplay muted loop playsinline></video>
+        <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=900&q=75" alt="Veterinária da Animali examinando um cachorro" class="w-full h-full object-cover" onerror="this.remove()">
       </div>
 
       <!-- selo com a logo real, como um carimbo -->
@@ -218,10 +184,10 @@ tailwind.config = {
 <!-- ══════════ FAIXA DE CONFIANÇA ══════════ -->
 <section class="bg-ameixa">
   <div class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm">
-    <div class="flex items-center justify-center gap-2.5 font-bold text-white"><span class="w-9 h-9 rounded-full bg-sol grid place-items-center shrink-0 text-ameixa"><svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v4M4 5h8"/><path d="M8 7a5 5 0 0 0 5 5v2a6 6 0 0 0 6-6V6"/><circle cx="19" cy="6" r="2"/><path d="M13 14v3a4 4 0 0 0 8 0"/></svg></span> Especialistas no local</div>
-    <div class="flex items-center justify-center gap-2.5 font-bold text-white"><span class="w-9 h-9 rounded-full bg-turquesa grid place-items-center shrink-0"><svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c-2.8 4-6 8.3-6 12.2A6 6 0 0 0 12 20a6 6 0 0 0 6-5.8C18 10.3 14.8 6 12 2z"/></svg></span> Coleta sem estresse</div>
-    <div class="flex items-center justify-center gap-2.5 font-bold text-white"><span class="w-9 h-9 rounded-full bg-roxo grid place-items-center shrink-0"><svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="currentColor"><ellipse cx="6" cy="8" rx="2.1" ry="2.8"/><ellipse cx="11" cy="5.6" rx="2.1" ry="2.8"/><ellipse cx="16" cy="6.6" rx="2.1" ry="2.8"/><ellipse cx="19.5" cy="10.5" rx="1.9" ry="2.5"/><path d="M12.4 11.5c3 0 5.4 2.2 5.4 4.6 0 2-1.6 3-3.4 3-1 0-1.4-.4-2-.4s-1 .4-2 .4c-1.8 0-3.4-1-3.4-3 0-2.4 2.4-4.6 5.4-4.6z"/></svg></span> Clínica + pet shop</div>
-    <div class="flex items-center justify-center gap-2.5 font-bold text-white"><span class="w-9 h-9 rounded-full bg-sol grid place-items-center shrink-0 text-ameixa"><svg class="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2.2"/><path d="M2.5 10h19"/></svg></span> Pix, cartão e dinheiro</div>
+    <div class="flex items-center justify-center gap-2.5 font-bold text-white"><span class="w-9 h-9 rounded-full bg-sol grid place-items-center text-lg shrink-0">🩺</span> Especialistas no local</div>
+    <div class="flex items-center justify-center gap-2.5 font-bold text-white"><span class="w-9 h-9 rounded-full bg-turquesa grid place-items-center text-lg shrink-0">🩸</span> Coleta sem estresse</div>
+    <div class="flex items-center justify-center gap-2.5 font-bold text-white"><span class="w-9 h-9 rounded-full bg-roxo grid place-items-center text-lg shrink-0">🐾</span> Clínica + pet shop</div>
+    <div class="flex items-center justify-center gap-2.5 font-bold text-white"><span class="w-9 h-9 rounded-full bg-sol grid place-items-center text-lg shrink-0">💳</span> Pix, cartão e dinheiro</div>
   </div>
 </section>
 
@@ -250,9 +216,9 @@ tailwind.config = {
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-      <article class="grupo-foto eleva aparece bg-creme rounded-[2rem] overflow-hidden border-4 border-roxo-100 hover:border-roxo hover:shadow-alta transition">
-        <div class="foto h-48 overflow-hidden relative">
-          <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=800&q=70" alt="Consulta veterinária" class="w-full h-full object-cover" onerror="this.remove()"><div class="absolute inset-0 tinta bg-roxo"></div>
+      <article class="grupo-foto aparece bg-creme rounded-[2rem] overflow-hidden border-4 border-roxo-100 hover:border-roxo hover:shadow-alta transition">
+        <div class="foto h-48 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=800&q=70" alt="Consulta veterinária" class="w-full h-full object-cover" onerror="this.remove()">
         </div>
         <div class="p-7">
           <h3 class="font-display font-bold text-2xl">Consultas Especializadas</h3>
@@ -266,9 +232,9 @@ tailwind.config = {
         </div>
       </article>
 
-      <article class="grupo-foto eleva aparece bg-creme rounded-[2rem] overflow-hidden border-4 border-turquesa-100 hover:border-turquesa hover:shadow-alta transition">
-        <div class="foto h-48 overflow-hidden relative">
-          <img src="https://images.unsplash.com/photo-1591946614720-90a587da4a36?auto=format&fit=crop&w=800&q=70" alt="Procedimento cirúrgico veterinário" class="w-full h-full object-cover" onerror="this.remove()"><div class="absolute inset-0 tinta bg-turquesa"></div>
+      <article class="grupo-foto aparece bg-creme rounded-[2rem] overflow-hidden border-4 border-turquesa-100 hover:border-turquesa hover:shadow-alta transition">
+        <div class="foto h-48 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1591946614720-90a587da4a36?auto=format&fit=crop&w=800&q=70" alt="Procedimento cirúrgico veterinário" class="w-full h-full object-cover" onerror="this.remove()">
         </div>
         <div class="p-7">
           <h3 class="font-display font-bold text-2xl">Cirurgias</h3>
@@ -282,9 +248,9 @@ tailwind.config = {
         </div>
       </article>
 
-      <article class="grupo-foto eleva aparece bg-creme rounded-[2rem] overflow-hidden border-4 border-sol-100 hover:border-sol hover:shadow-alta transition">
-        <div class="foto h-48 overflow-hidden relative">
-          <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=800&q=70" alt="Cães filhotes" class="w-full h-full object-cover" onerror="this.remove()"><div class="absolute inset-0 tinta bg-sol"></div>
+      <article class="grupo-foto aparece bg-creme rounded-[2rem] overflow-hidden border-4 border-sol-100 hover:border-sol hover:shadow-alta transition">
+        <div class="foto h-48 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&w=800&q=70" alt="Cães filhotes" class="w-full h-full object-cover" onerror="this.remove()">
         </div>
         <div class="p-7">
           <h3 class="font-display font-bold text-2xl">Reprodução Animal</h3>
@@ -298,9 +264,9 @@ tailwind.config = {
         </div>
       </article>
 
-      <article class="grupo-foto eleva aparece bg-creme rounded-[2rem] overflow-hidden border-4 border-roxo-100 hover:border-roxo hover:shadow-alta transition">
-        <div class="foto h-48 overflow-hidden relative">
-          <img src="https://images.unsplash.com/photo-1601979031925-424e53b6caaa?auto=format&fit=crop&w=800&q=70" alt="Exame de sangue em pet" class="w-full h-full object-cover" onerror="this.remove()"><div class="absolute inset-0 tinta bg-roxo"></div>
+      <article class="grupo-foto aparece bg-creme rounded-[2rem] overflow-hidden border-4 border-roxo-100 hover:border-roxo hover:shadow-alta transition">
+        <div class="foto h-48 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1601979031925-424e53b6caaa?auto=format&fit=crop&w=800&q=70" alt="Exame de sangue em pet" class="w-full h-full object-cover" onerror="this.remove()">
         </div>
         <div class="p-7">
           <h3 class="font-display font-bold text-2xl">Exames &amp; Coleta de Sangue</h3>
@@ -314,9 +280,9 @@ tailwind.config = {
         </div>
       </article>
 
-      <article class="grupo-foto eleva aparece bg-creme rounded-[2rem] overflow-hidden border-4 border-turquesa-100 hover:border-turquesa hover:shadow-alta transition">
-        <div class="foto h-48 overflow-hidden relative">
-          <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=800&q=70" alt="Produtos de pet shop" class="w-full h-full object-cover" onerror="this.remove()"><div class="absolute inset-0 tinta bg-turquesa"></div>
+      <article class="grupo-foto aparece bg-creme rounded-[2rem] overflow-hidden border-4 border-turquesa-100 hover:border-turquesa hover:shadow-alta transition">
+        <div class="foto h-48 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=800&q=70" alt="Produtos de pet shop" class="w-full h-full object-cover" onerror="this.remove()">
         </div>
         <div class="p-7">
           <h3 class="font-display font-bold text-2xl">Pet Shop &amp; Produtos</h3>
@@ -398,20 +364,20 @@ tailwind.config = {
     </div>
 
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
-      <div class="grupo-foto eleva aparece bg-creme rounded-[1.75rem] overflow-hidden border-4 border-roxo-100">
-        <div class="foto h-40 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=600&q=70" alt="Rações" class="w-full h-full object-cover" onerror="this.remove()"><div class="absolute inset-0 tinta bg-roxo"></div></div>
+      <div class="grupo-foto aparece bg-creme rounded-[1.75rem] overflow-hidden border-4 border-roxo-100">
+        <div class="foto h-40 overflow-hidden"><img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=600&q=70" alt="Rações" class="w-full h-full object-cover" onerror="this.remove()"></div>
         <div class="p-5"><h3 class="font-display font-bold text-lg">Rações</h3><p class="text-sm text-ameixa/60 mt-1 font-medium">Premium e super premium, filhote ao sênior.</p></div>
       </div>
-      <div class="grupo-foto eleva aparece bg-creme rounded-[1.75rem] overflow-hidden border-4 border-turquesa-100">
-        <div class="foto h-40 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?auto=format&fit=crop&w=600&q=70" alt="Petiscos" class="w-full h-full object-cover" onerror="this.remove()"><div class="absolute inset-0 tinta bg-roxo"></div></div>
+      <div class="grupo-foto aparece bg-creme rounded-[1.75rem] overflow-hidden border-4 border-turquesa-100">
+        <div class="foto h-40 overflow-hidden"><img src="https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?auto=format&fit=crop&w=600&q=70" alt="Petiscos" class="w-full h-full object-cover" onerror="this.remove()"></div>
         <div class="p-5"><h3 class="font-display font-bold text-lg">Petiscos</h3><p class="text-sm text-ameixa/60 mt-1 font-medium">Bifinhos, ossinhos e o agrado do dia.</p></div>
       </div>
-      <div class="grupo-foto eleva aparece bg-creme rounded-[1.75rem] overflow-hidden border-4 border-sol-100">
-        <div class="foto h-40 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=600&q=70" alt="Perfumaria pet" class="w-full h-full object-cover" onerror="this.remove()"><div class="absolute inset-0 tinta bg-roxo"></div></div>
+      <div class="grupo-foto aparece bg-creme rounded-[1.75rem] overflow-hidden border-4 border-sol-100">
+        <div class="foto h-40 overflow-hidden"><img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=600&q=70" alt="Perfumaria pet" class="w-full h-full object-cover" onerror="this.remove()"></div>
         <div class="p-5"><h3 class="font-display font-bold text-lg">Perfumaria</h3><p class="text-sm text-ameixa/60 mt-1 font-medium">Shampoos, condicionadores e perfumes.</p></div>
       </div>
-      <div class="grupo-foto eleva aparece bg-creme rounded-[1.75rem] overflow-hidden border-4 border-roxo-100">
-        <div class="foto h-40 overflow-hidden relative"><img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=600&q=70" alt="Acessórios" class="w-full h-full object-cover" onerror="this.remove()"><div class="absolute inset-0 tinta bg-roxo"></div></div>
+      <div class="grupo-foto aparece bg-creme rounded-[1.75rem] overflow-hidden border-4 border-roxo-100">
+        <div class="foto h-40 overflow-hidden"><img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=600&q=70" alt="Acessórios" class="w-full h-full object-cover" onerror="this.remove()"></div>
         <div class="p-5"><h3 class="font-display font-bold text-lg">Acessórios</h3><p class="text-sm text-ameixa/60 mt-1 font-medium">Coleiras, camas, brinquedos e mais.</p></div>
       </div>
     </div>
@@ -450,17 +416,17 @@ tailwind.config = {
       <h2 class="font-display font-bold text-3xl md:text-5xl mt-3">O que os tutores dizem</h2>
     </div>
     <div class="grid md:grid-cols-3 gap-6 mt-12">
-      <figure class="selo-fita eleva aparece bg-turquesa-50 border-4 border-turquesa-100 rounded-[2rem] p-8">
+      <figure class="selo-fita aparece bg-turquesa-50 border-4 border-turquesa-100 rounded-[2rem] p-8">
         <div class="text-sol text-xl">★★★★★</div>
         <blockquote class="mt-4 text-ameixa/80 leading-relaxed font-semibold">"Equipe super atenciosa, meu gato sempre sai tranquilo das consultas. Recomendo demais."</blockquote>
         <figcaption class="mt-6 font-bold text-sm text-ameixa/60">Cliente do Google · Animali</figcaption>
       </figure>
-      <figure class="selo-fita eleva aparece bg-roxo-50 border-4 border-roxo-100 rounded-[2rem] p-8">
+      <figure class="selo-fita aparece bg-roxo-50 border-4 border-roxo-100 rounded-[2rem] p-8">
         <div class="text-sol text-xl">★★★★★</div>
         <blockquote class="mt-4 text-ameixa/80 leading-relaxed font-semibold">"Fiz a coleta de sangue do meu cachorro lá e ele nem percebeu o processo, muito cuidado da equipe."</blockquote>
         <figcaption class="mt-6 font-bold text-sm text-ameixa/60">Cliente do Google · Animali</figcaption>
       </figure>
-      <figure class="selo-fita eleva aparece bg-sol-50 border-4 border-sol-100 rounded-[2rem] p-8">
+      <figure class="selo-fita aparece bg-sol-50 border-4 border-sol-100 rounded-[2rem] p-8">
         <div class="text-sol-600 text-xl">★★★★★</div>
         <blockquote class="mt-4 text-ameixa/80 leading-relaxed font-semibold">"Já levei pra cirurgia e pra consulta de rotina, sempre um atendimento cuidadoso e explicado direitinho."</blockquote>
         <figcaption class="mt-6 font-bold text-sm text-ameixa/60">Cliente · Jardim Tavares</figcaption>
@@ -607,29 +573,6 @@ tailwind.config = {
   </div>
 </div>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VeterinaryCare",
-  "name": "Animali Especialidades Veterinárias",
-  "image": "https://animalicg.com.br/assets/logo-animali.jpg",
-  "url": "https://animalicg.com.br",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Campina Grande",
-    "addressRegion": "PB",
-    "postalCode": "58402-045",
-    "addressCountry": "BR"
-  },
-  "openingHoursSpecification": [
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
-    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "08:00", "closes": "15:00" }
-  ],
-  "sameAs": ["https://www.instagram.com/animalicg/"]
-}
-</script>
-
 <script src="/conteudo.js"></script>
 <script>
 const WHATSAPP_LINK = 'https://wa.me/558398020927';
@@ -670,15 +613,6 @@ function abrirWhats(msg) {
   fecharModal();
 }
 function menuMobile() { document.getElementById('menuMob').classList.toggle('hidden'); }
-
-/* sombra no cabeçalho só depois de rolar um pouco a página */
-(function sombraCabecalho() {
-  const header = document.getElementById('topo');
-  if (!header) return;
-  const atualizar = () => header.classList.toggle('rolou', window.scrollY > 8);
-  document.addEventListener('scroll', atualizar, { passive: true });
-  atualizar();
-})();
 document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
 
 /* ---------- ABERTO/FECHADO AGORA (a partir do horário real) ---------- */
@@ -723,10 +657,9 @@ const MESES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Ag
   grade.innerHTML = CAMPANHAS.map(c => {
     const cor = CORES[c.cor] || CORES.roxo;
     return `
-    <article class="grupo-foto eleva aparece bg-white rounded-[2rem] overflow-hidden shadow-card border-4 ${cor.borda} hover:shadow-alta transition flex flex-col">
+    <article class="grupo-foto aparece bg-white rounded-[2rem] overflow-hidden shadow-card border-4 ${cor.borda} hover:shadow-alta transition flex flex-col">
       <div class="foto h-44 overflow-hidden relative">
         <img src="${c.img}" alt="${c.titulo}" class="w-full h-full object-cover" onerror="this.remove()">
-        <div class="absolute inset-0 tinta bg-${c.cor === 'ameixa' ? 'sol' : c.cor}"></div>
         <span class="absolute top-4 left-4 ${cor.selo} text-xs font-extrabold tracking-wider px-3 py-1.5 rounded-full shadow">${c.selo}</span>
       </div>
       <div class="p-7 flex flex-col flex-1">
@@ -748,12 +681,9 @@ const MESES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Ag
   const bordas = ['border-roxo', 'border-turquesa', 'border-sol'];
   grade.innerHTML = VIDEOS.map((v, i) => `
     <div class="video-card aparece group relative block rounded-[2rem] overflow-hidden aspect-[9/16] shadow-alta border-4 ${bordas[i % bordas.length]} bg-ameixa ${i % 2 ? '-rotate-1' : 'rotate-1'}">
-      <video class="w-full h-full object-cover cursor-pointer pausado" data-src="${v.src}" muted loop playsinline preload="none" onclick="alternarSom(this)" onplaying="this.classList.remove('pausado')" onpause="this.classList.add('pausado')"></video>
-      <span class="selo-tocando absolute top-3 left-3 bg-white/90 backdrop-blur text-ameixa text-[11px] font-extrabold px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow">
-        <span class="w-1.5 h-1.5 rounded-full bg-roxo animate-pulse"></span> TOCANDO
-      </span>
+      <video class="w-full h-full object-cover cursor-pointer" data-src="${v.src}" muted loop playsinline preload="none" onclick="alternarSom(this)"></video>
       <div class="absolute inset-0 bg-gradient-to-t from-ameixa/85 via-transparent to-transparent pointer-events-none"></div>
-      <button type="button" onclick="alternarSom(this.parentElement.querySelector('video'))" aria-label="Ativar ou desativar o som" class="botao-som absolute top-3 right-3 w-10 h-10 rounded-full bg-sol text-ameixa grid place-items-center shadow-card">
+      <button type="button" onclick="alternarSom(this.previousElementSibling.previousElementSibling)" aria-label="Ativar ou desativar o som" class="botao-som absolute top-3 right-3 w-10 h-10 rounded-full bg-sol text-ameixa grid place-items-center shadow-card">
         <svg class="icone-mudo w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M16.5 12A4.5 4.5 0 0 0 14 8v2.2l2.4 2.4c.06-.2.1-.4.1-.6zm2.5 0a6.9 6.9 0 0 1-.6 2.8l1.5 1.5A9 9 0 0 0 21 12c0-4.1-2.8-7.6-6.6-8.7v2.1A7 7 0 0 1 19 12zM4.3 3 3 4.3 7 8.3H3v7.4h4l5 4V13.3l4.2 4.2c-.6.5-1.3.9-2.2 1.2v2.1c1.4-.3 2.7-1 3.7-1.9l2 2 1.3-1.3L4.3 3zM12 4l-2.2 2.2L12 8.4V4z"/></svg>
         <svg class="icone-com-som hidden w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M3 8.3v7.4h4l5 4V4.3l-5 4H3zm13.5 3.7a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.3v2.1c3.4 1 6 4.4 6 8.6s-2.6 7.6-6 8.6v2.1c4.6-1 8-5.1 8-10.7s-3.4-9.7-8-10.7z"/></svg>
       </button>

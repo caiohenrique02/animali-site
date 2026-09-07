@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animali Especialidades Veterinárias — Versão Minimalista</title>
+<meta name="description" content="Animali Especialidades Veterinárias em Campina Grande: consultas com especialistas, cirurgias, reprodução animal, exames e petshop. Bairro Jardim Tavares, atendimento de segunda a sábado.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        roxo:     { DEFAULT: '#9B2E8B', 600: '#7C2470', 100: '#F4DBF0', 50: '#FCF2FB' },
+        turquesa: { DEFAULT: '#2FB8AE', 600: '#239186', 100: '#D3F3F0', 50: '#EFFBFA' },
+        tinta:    { DEFAULT: '#332E3A' },
+        papel:    { DEFAULT: '#FAF8F5' },
+        linha:    { DEFAULT: '#E4E0DB' },
+      },
+      fontFamily: {
+        display: ['Fraunces', 'Georgia', 'serif'],
+        sans: ['Manrope', 'system-ui', 'sans-serif'],
+      },
+    }
+  }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #FAF8F5; }
+  .aparece { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .aparece.visivel { opacity: 1; transform: none; }
+  .foto img, .foto video { transition: transform .8s cubic-bezier(.2,.7,.3,1); }
+  .grupo-foto:hover img, .grupo-foto:hover video { transform: scale(1.04); }
+  .video-card video { background: #221f27; }
+  .botao-som { transition: background .2s, transform .2s; }
+  .botao-som:active { transform: scale(.92); }
+  .sublinha { text-decoration: underline; text-decoration-color: #2FB8AE; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+</style>
+</head>
+<body class="font-sans text-tinta antialiased">
+
+<!-- ══════════ BARRA SUPERIOR ══════════ -->
+<div class="bg-papel border-b border-linha text-[12px] text-tinta/70">
+  <div class="max-w-6xl mx-auto px-5 py-2.5 flex items-center justify-between gap-4 tracking-wide">
+    <p class="flex items-center gap-2 font-medium uppercase text-[11px]">
+      <span id="pontoStatus" class="relative flex h-2 w-2">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-turquesa opacity-60"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-turquesa"></span>
+      </span>
+      <span id="textoStatus" class="font-semibold text-turquesa-600">Seg a Sex, 8h às 18h</span>
+      <span class="hidden sm:inline text-tinta/40">· Sáb, 8h às 15h</span>
+    </p>
+    <div class="hidden md:flex items-center gap-6 text-tinta/50 uppercase text-[11px]">
+      <a href="https://www.instagram.com/animalicg/" target="_blank" rel="noopener" class="hover:text-roxo transition">@animalicg</a>
+      <a href="https://maps.app.goo.gl/HMdpxY6wfU2JrUgW6" target="_blank" rel="noopener" class="hover:text-roxo transition">Jardim Tavares, Campina Grande</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ CABEÇALHO ══════════ -->
+<header id="topo" class="sticky top-0 z-40 bg-papel/95 backdrop-blur-md border-b border-linha">
+  <div class="max-w-6xl mx-auto px-5 h-20 flex items-center justify-between gap-6">
+    <a href="#topo" class="flex items-center gap-3 shrink-0">
+      <div class="w-11 h-11 rounded-full ring-1 ring-tinta/15 overflow-hidden">
+        <img src="/assets/logo-animali.jpg" alt="Logo Animali" class="w-full h-full object-cover">
+      </div>
+      <div class="leading-none">
+        <p class="font-display font-semibold text-xl tracking-tight">Animali</p>
+        <p class="text-[9px] tracking-[.25em] text-tinta/45 font-semibold mt-1">ESPECIALIDADES VETERINÁRIAS</p>
+      </div>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8 text-[14px] font-medium text-tinta/70">
+      <a href="#servicos" class="hover:text-roxo transition pb-1 border-b border-transparent hover:border-roxo">Serviços</a>
+      <a href="#equipe" class="hover:text-roxo transition pb-1 border-b border-transparent hover:border-roxo">Equipe</a>
+      <a href="#loja" class="hover:text-roxo transition pb-1 border-b border-transparent hover:border-roxo">Loja</a>
+      <a href="#localizacao" class="hover:text-roxo transition pb-1 border-b border-transparent hover:border-roxo">Localização</a>
+      <a href="#duvidas" class="hover:text-roxo transition pb-1 border-b border-transparent hover:border-roxo">Dúvidas</a>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <button onclick="abrirModal('agendar')" class="hidden sm:inline-flex items-center gap-2 bg-tinta hover:bg-roxo text-white font-semibold text-sm px-5 py-2.5 rounded-sm transition">
+        Agendar
+      </button>
+      <button onclick="menuMobile()" class="lg:hidden w-10 h-10 grid place-items-center border border-linha rounded-sm" aria-label="Abrir menu">
+        <svg class="w-5 h-5 text-tinta" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="menuMob" class="hidden lg:hidden border-t border-linha bg-papel">
+    <nav class="px-5 py-4 flex flex-col gap-1 text-tinta font-medium">
+      <a href="#servicos" onclick="menuMobile()" class="py-3 border-b border-linha">Serviços</a>
+      <a href="#equipe" onclick="menuMobile()" class="py-3 border-b border-linha">Equipe</a>
+      <a href="#loja" onclick="menuMobile()" class="py-3 border-b border-linha">Loja</a>
+      <a href="#videos" onclick="menuMobile()" class="py-3 border-b border-linha">Vídeos</a>
+      <a href="#localizacao" onclick="menuMobile()" class="py-3 border-b border-linha">Localização</a>
+      <a href="#duvidas" onclick="menuMobile()" class="py-3">Dúvidas</a>
+      <button onclick="menuMobile();abrirModal('agendar')" class="mt-3 bg-tinta text-white font-semibold py-3 rounded-sm">Agendar pelo WhatsApp</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="bg-papel">
+  <div class="max-w-6xl mx-auto px-5 py-16 md:py-24 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+    <div class="lg:col-span-7">
+      <p class="text-roxo font-semibold tracking-[.2em] text-xs uppercase">Clínica e pet shop · Jardim Tavares</p>
+      <h1 class="font-display font-medium text-tinta text-4xl md:text-6xl leading-[1.08] mt-5">
+        O cuidado do seu pet,<br>
+        com quem é <span class="sublinha">especialista</span> de verdade.
+      </h1>
+      <p class="text-tinta/65 text-lg mt-7 leading-relaxed max-w-md">
+        Consultas com especialistas, cirurgias, reprodução animal e exames — tudo numa clínica e pet shop só, no Jardim Tavares.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-3 mt-9">
+        <button onclick="abrirModal('agendar')" class="inline-flex items-center justify-center gap-2 bg-tinta hover:bg-roxo text-white font-semibold px-7 py-3.5 rounded-sm transition">
+          Agendar consulta
+        </button>
+        <a href="#servicos" class="inline-flex items-center justify-center gap-2 border border-tinta/25 hover:border-tinta text-tinta font-semibold px-7 py-3.5 rounded-sm transition">
+          Ver serviços
+        </a>
+      </div>
+
+      <div class="flex flex-wrap gap-x-8 gap-y-5 mt-14 pt-8 border-t border-linha">
+        <div><p class="font-display font-medium text-2xl text-tinta">5,5 mil</p><p class="text-tinta/50 text-sm mt-0.5">seguidores</p></div>
+        <div class="pl-8 border-l border-linha"><p class="font-display font-medium text-2xl text-tinta">Seg–Sáb</p><p class="text-tinta/50 text-sm mt-0.5">atendimento</p></div>
+        <div class="pl-8 border-l border-linha"><p class="font-display font-medium text-2xl text-tinta">Equipe</p><p class="text-tinta/50 text-sm mt-0.5">de especialistas</p></div>
+        <div class="pl-8 border-l border-linha"><p class="font-display font-medium text-2xl text-tinta">Clínica +</p><p class="text-tinta/50 text-sm mt-0.5">pet shop</p></div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-5 relative">
+      <div class="absolute inset-0 border border-tinta/15 translate-x-3 translate-y-3 pointer-events-none"></div>
+      <div class="relative grupo-foto foto overflow-hidden aspect-[4/5] ring-1 ring-tinta/10">
+        <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=900&q=75" alt="Veterinária da Animali examinando um cachorro" class="w-full h-full object-cover" onerror="this.remove()">
+      </div>
+      <div class="absolute -bottom-5 left-5 bg-white px-5 py-4 flex items-center gap-3 border border-linha shadow-[0_10px_30px_-15px_rgba(51,46,58,.25)]">
+        <span id="iconeStatus" class="relative flex h-2.5 w-2.5 shrink-0">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-turquesa opacity-60"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-turquesa"></span>
+        </span>
+        <div class="leading-tight">
+          <p id="tituloStatus" class="font-display font-medium text-tinta text-sm">Aberto agora</p>
+          <p class="text-xs text-tinta/50">Jardim Tavares · Seg a Sáb</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAIXA DE CONFIANÇA ══════════ -->
+<section class="bg-white border-y border-linha">
+  <div class="max-w-6xl mx-auto px-5 py-6 grid grid-cols-2 md:grid-cols-4 text-sm text-tinta/70">
+    <div class="flex items-center gap-2.5 font-medium py-2 md:py-0 md:border-r border-linha md:pr-4">
+      <svg class="w-4 h-4 text-roxo shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5z"/></svg>
+      Especialistas no local
+    </div>
+    <div class="flex items-center gap-2.5 font-medium py-2 md:py-0 md:border-r border-linha md:px-4">
+      <svg class="w-4 h-4 text-roxo shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2s6 7 6 12a6 6 0 1 1-12 0c0-5 6-12 6-12z"/></svg>
+      Coleta de sangue sem estresse
+    </div>
+    <div class="flex items-center gap-2.5 font-medium py-2 md:py-0 md:border-r border-linha md:px-4">
+      <svg class="w-4 h-4 text-roxo shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M9 12a3 3 0 1 0 6 0 3 3 0 0 0-6 0z"/></svg>
+      Clínica + pet shop
+    </div>
+    <div class="flex items-center gap-2.5 font-medium py-2 md:py-0 md:pl-4">
+      <svg class="w-4 h-4 text-roxo shrink-0" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="1.5"/><path stroke-linecap="round" d="M3 10h18"/></svg>
+      Pix, cartão e dinheiro
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ AÇÕES DO MÊS ══════════ -->
+<section id="destaques" class="py-20 md:py-28 bg-papel">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 aparece">
+      <div class="max-w-xl">
+        <p class="text-roxo font-semibold tracking-[.2em] text-xs uppercase">Ações e conscientização do mês</p>
+        <h2 class="font-display font-medium text-3xl md:text-5xl mt-4 leading-tight">O que está rolando agora</h2>
+      </div>
+      <p id="mesAtual" class="shrink-0 text-tinta/50 font-medium text-sm uppercase tracking-wide"></p>
+    </div>
+    <div id="gradeCampanhas" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-14"></div>
+  </div>
+</section>
+
+<!-- ══════════ SERVIÇOS ══════════ -->
+<section id="servicos" class="py-20 md:py-28 bg-white border-y border-linha">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="max-w-xl aparece">
+      <p class="text-roxo font-semibold tracking-[.2em] text-xs uppercase">Nossos serviços</p>
+      <h2 class="font-display font-medium text-3xl md:text-5xl mt-4 leading-tight">Cuidado completo, do consultório à loja</h2>
+    </div>
+
+    <div class="mt-14 divide-y divide-linha border-t border-b border-linha">
+      <div class="aparece grid md:grid-cols-12 gap-6 md:gap-10 py-9">
+        <p class="md:col-span-1 font-display text-2xl text-tinta/25">01</p>
+        <div class="md:col-span-4">
+          <h3 class="font-display font-medium text-2xl">Consultas Especializadas</h3>
+          <p class="text-tinta/60 mt-2 text-sm leading-relaxed">Clínica geral e acompanhamento com veterinárias que conhecem o seu pet pelo nome.</p>
+        </div>
+        <p class="md:col-span-5 text-sm text-tinta/55 self-center">Consulta clínica geral · Vacinação e vermifugação · Acompanhamento contínuo</p>
+        <button onclick="abrirModal('consulta')" class="md:col-span-2 text-left font-semibold text-roxo hover:underline self-center">Marcar consulta →</button>
+      </div>
+
+      <div class="aparece grid md:grid-cols-12 gap-6 md:gap-10 py-9">
+        <p class="md:col-span-1 font-display text-2xl text-tinta/25">02</p>
+        <div class="md:col-span-4">
+          <h3 class="font-display font-medium text-2xl">Cirurgias</h3>
+          <p class="text-tinta/60 mt-2 text-sm leading-relaxed">Procedimentos com estrutura própria e acompanhamento antes, durante e depois.</p>
+        </div>
+        <p class="md:col-span-5 text-sm text-tinta/55 self-center">Avaliação pré-cirúrgica · Castração · Acompanhamento no pós-operatório</p>
+        <button onclick="abrirModal('cirurgia')" class="md:col-span-2 text-left font-semibold text-roxo hover:underline self-center">Falar sobre cirurgia →</button>
+      </div>
+
+      <div class="aparece grid md:grid-cols-12 gap-6 md:gap-10 py-9">
+        <p class="md:col-span-1 font-display text-2xl text-tinta/25">03</p>
+        <div class="md:col-span-4">
+          <h3 class="font-display font-medium text-2xl">Reprodução Animal</h3>
+          <p class="text-tinta/60 mt-2 text-sm leading-relaxed">Acompanhamento reprodutivo de cães e gatos, com orientação em cada etapa.</p>
+        </div>
+        <p class="md:col-span-5 text-sm text-tinta/55 self-center">Avaliação reprodutiva · Acompanhamento da gestação · Orientação especializada</p>
+        <button onclick="abrirModal('reproducao')" class="md:col-span-2 text-left font-semibold text-roxo hover:underline self-center">Saber mais →</button>
+      </div>
+
+      <div class="aparece grid md:grid-cols-12 gap-6 md:gap-10 py-9">
+        <p class="md:col-span-1 font-display text-2xl text-tinta/25">04</p>
+        <div class="md:col-span-4">
+          <h3 class="font-display font-medium text-2xl">Exames &amp; Coleta de Sangue</h3>
+          <p class="text-tinta/60 mt-2 text-sm leading-relaxed">Coleta e exames laboratoriais com o mínimo de estresse possível.</p>
+        </div>
+        <p class="md:col-span-5 text-sm text-tinta/55 self-center">Coleta de sangue · Exames laboratoriais · Manejo de baixo estresse</p>
+        <button onclick="abrirModal('exame')" class="md:col-span-2 text-left font-semibold text-roxo hover:underline self-center">Agendar exame →</button>
+      </div>
+
+      <div class="aparece grid md:grid-cols-12 gap-6 md:gap-10 py-9">
+        <p class="md:col-span-1 font-display text-2xl text-tinta/25">05</p>
+        <div class="md:col-span-4">
+          <h3 class="font-display font-medium text-2xl">Pet Shop &amp; Produtos</h3>
+          <p class="text-tinta/60 mt-2 text-sm leading-relaxed">Ração, petiscos, perfumaria e acessórios no mesmo lugar da clínica.</p>
+        </div>
+        <p class="md:col-span-5 text-sm text-tinta/55 self-center">Rações e petiscos · Perfumaria e higiene · Acessórios</p>
+        <button onclick="abrirModal('produto')" class="md:col-span-2 text-left font-semibold text-roxo hover:underline self-center">Consultar produto →</button>
+      </div>
+    </div>
+
+    <div class="mt-10 flex items-center justify-between gap-4 border border-linha p-7">
+      <div>
+        <h3 class="font-display font-medium text-xl">Não achou o que precisa?</h3>
+        <p class="text-tinta/55 text-sm mt-1">Chama no WhatsApp que a equipe da Animali te orienta.</p>
+      </div>
+      <button onclick="abrirModal('agendar')" class="shrink-0 bg-tinta hover:bg-roxo text-white font-semibold px-6 py-3 rounded-sm transition">Falar no WhatsApp</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ EQUIPE ══════════ -->
+<section id="equipe" class="py-20 md:py-28 bg-papel">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center max-w-xl mx-auto aparece">
+      <p class="text-roxo font-semibold tracking-[.2em] text-xs uppercase">Cuidado especializado</p>
+      <h2 class="font-display font-medium text-3xl md:text-5xl mt-4">Conheça a nossa equipe</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-8 mt-14">
+      <article class="aparece text-center">
+        <div class="grupo-foto foto overflow-hidden aspect-[4/5] border border-linha">
+          <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=500&q=75" alt="Dra. Jássia Meneses" class="w-full h-full object-cover" onerror="this.remove()">
+        </div>
+        <h3 class="font-display font-medium text-xl mt-4">Dra. Jássia Meneses</h3>
+        <p class="text-tinta/50 text-sm mt-0.5 uppercase tracking-wide">Médica Veterinária</p>
+      </article>
+      <article class="aparece text-center">
+        <div class="grupo-foto foto overflow-hidden aspect-[4/5] border border-linha">
+          <img src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=500&q=75" alt="Dra. Paula Peixoto" class="w-full h-full object-cover" onerror="this.remove()">
+        </div>
+        <h3 class="font-display font-medium text-xl mt-4">Dra. Paula Peixoto</h3>
+        <p class="text-tinta/50 text-sm mt-0.5 uppercase tracking-wide">Médica Veterinária</p>
+      </article>
+      <article class="aparece text-center">
+        <div class="grupo-foto foto overflow-hidden aspect-[4/5] border border-linha">
+          <img src="https://images.unsplash.com/photo-1607990283143-e81e7a2c9349?auto=format&fit=crop&w=500&q=75" alt="Dra. Tereza Rotondano" class="w-full h-full object-cover" onerror="this.remove()">
+        </div>
+        <h3 class="font-display font-medium text-xl mt-4">Dra. Tereza Rotondano</h3>
+        <p class="text-tinta/50 text-sm mt-0.5 uppercase tracking-wide">Médica Veterinária</p>
+      </article>
+    </div>
+    <p class="text-center text-xs text-tinta/35 mt-10">⚠️ Fotos ilustrativas e especialidade genérica — trocar pelas fotos e especialidades reais de cada uma.</p>
+  </div>
+</section>
+
+<!-- ══════════ LOJA ══════════ -->
+<section id="loja" class="py-20 md:py-28 bg-white border-y border-linha">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="max-w-xl aparece">
+      <p class="text-roxo font-semibold tracking-[.2em] text-xs uppercase">Nossa loja</p>
+      <h2 class="font-display font-medium text-3xl md:text-5xl mt-4 leading-tight">Ração, petisco, perfume e muito mimo</h2>
+      <p class="text-tinta/60 text-lg mt-5">Trabalhamos com boas marcas do mercado. Não achou o que procura? Chama no WhatsApp.</p>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
+      <div class="grupo-foto aparece">
+        <div class="foto aspect-[4/3] overflow-hidden border border-linha"><img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=600&q=70" alt="Rações" class="w-full h-full object-cover" onerror="this.remove()"></div>
+        <h3 class="font-display font-medium text-lg mt-3">Rações</h3><p class="text-sm text-tinta/55 mt-1">Premium e super premium, filhote ao sênior.</p>
+      </div>
+      <div class="grupo-foto aparece">
+        <div class="foto aspect-[4/3] overflow-hidden border border-linha"><img src="https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?auto=format&fit=crop&w=600&q=70" alt="Petiscos" class="w-full h-full object-cover" onerror="this.remove()"></div>
+        <h3 class="font-display font-medium text-lg mt-3">Petiscos</h3><p class="text-sm text-tinta/55 mt-1">Bifinhos, ossinhos e o agrado do dia.</p>
+      </div>
+      <div class="grupo-foto aparece">
+        <div class="foto aspect-[4/3] overflow-hidden border border-linha"><img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=600&q=70" alt="Perfumaria pet" class="w-full h-full object-cover" onerror="this.remove()"></div>
+        <h3 class="font-display font-medium text-lg mt-3">Perfumaria</h3><p class="text-sm text-tinta/55 mt-1">Shampoos, condicionadores e perfumes.</p>
+      </div>
+      <div class="grupo-foto aparece">
+        <div class="foto aspect-[4/3] overflow-hidden border border-linha"><img src="https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=600&q=70" alt="Acessórios" class="w-full h-full object-cover" onerror="this.remove()"></div>
+        <h3 class="font-display font-medium text-lg mt-3">Acessórios</h3><p class="text-sm text-tinta/55 mt-1">Coleiras, camas, brinquedos e mais.</p>
+      </div>
+    </div>
+
+    <div class="mt-14">
+      <button onclick="abrirModal('produto')" class="inline-flex items-center gap-2 bg-tinta hover:bg-roxo text-white font-semibold px-7 py-3.5 rounded-sm transition">
+        Consultar produto no WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ VÍDEOS DO INSTAGRAM ══════════ -->
+<section id="videos" class="py-20 md:py-28 bg-papel">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 aparece">
+      <div class="max-w-xl">
+        <p class="text-roxo font-semibold tracking-[.2em] text-xs uppercase">Nosso dia a dia</p>
+        <h2 class="font-display font-medium text-3xl md:text-5xl mt-4 leading-tight">Vem ver como é por dentro da Animali</h2>
+      </div>
+      <a href="https://www.instagram.com/animalicg/" target="_blank" rel="noopener" class="shrink-0 inline-flex items-center gap-2 border border-tinta/25 hover:border-tinta text-tinta font-semibold px-5 py-3 rounded-sm transition text-sm">
+        Seguir @animalicg
+      </a>
+    </div>
+    <div id="gradeVideos" class="grid grid-cols-2 lg:grid-cols-3 gap-6 mt-14"></div>
+  </div>
+</section>
+
+<!-- ══════════ DEPOIMENTOS ══════════ -->
+<section class="py-20 md:py-28 bg-white border-y border-linha">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="text-center max-w-xl mx-auto aparece">
+      <p class="text-roxo font-semibold tracking-[.2em] text-xs uppercase">Quem já confia na gente</p>
+      <h2 class="font-display font-medium text-3xl md:text-5xl mt-4">O que os tutores dizem</h2>
+    </div>
+    <div class="grid md:grid-cols-3 mt-14 divide-y md:divide-y-0 md:divide-x divide-linha">
+      <figure class="aparece md:px-8 py-8 md:py-0 first:pt-0">
+        <p class="text-roxo text-sm tracking-widest">★★★★★</p>
+        <blockquote class="mt-4 font-display text-xl leading-snug text-tinta">"Equipe super atenciosa, meu gato sempre sai tranquilo das consultas."</blockquote>
+        <figcaption class="mt-5 text-xs uppercase tracking-wide text-tinta/45">Cliente do Google</figcaption>
+      </figure>
+      <figure class="aparece md:px-8 py-8 md:py-0">
+        <p class="text-roxo text-sm tracking-widest">★★★★★</p>
+        <blockquote class="mt-4 font-display text-xl leading-snug text-tinta">"Fiz a coleta de sangue do meu cachorro lá e ele nem percebeu o processo."</blockquote>
+        <figcaption class="mt-5 text-xs uppercase tracking-wide text-tinta/45">Cliente do Google</figcaption>
+      </figure>
+      <figure class="aparece md:px-8 py-8 md:py-0">
+        <p class="text-roxo text-sm tracking-widest">★★★★★</p>
+        <blockquote class="mt-4 font-display text-xl leading-snug text-tinta">"Já levei pra cirurgia e pra consulta de rotina, sempre um atendimento cuidadoso."</blockquote>
+        <figcaption class="mt-5 text-xs uppercase tracking-wide text-tinta/45">Cliente · Jardim Tavares</figcaption>
+      </figure>
+    </div>
+    <p class="text-center text-xs text-tinta/35 mt-10">⚠️ Depoimentos de exemplo — substituir pelos reais antes de publicar.</p>
+  </div>
+</section>
+
+<!-- ══════════ LOCALIZAÇÃO ══════════ -->
+<section id="localizacao" class="py-20 md:py-28 bg-papel">
+  <div class="max-w-4xl mx-auto px-5">
+    <div class="text-center max-w-xl mx-auto aparece">
+      <p class="text-roxo font-semibold tracking-[.2em] text-xs uppercase">Onde nos encontrar</p>
+      <h2 class="font-display font-medium text-3xl md:text-5xl mt-4">Animali — Jardim Tavares</h2>
+    </div>
+
+    <article class="aparece mt-14 border border-linha">
+      <div class="px-7 py-4 flex items-center gap-2 font-semibold text-sm border-b border-linha">
+        <span id="pontoStatus2" class="relative flex h-2.5 w-2.5"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-turquesa opacity-60"></span><span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-turquesa"></span></span>
+        <span id="tituloStatus2" class="uppercase tracking-wide text-turquesa-600">ABERTO AGORA</span>
+      </div>
+      <div class="p-7 grid sm:grid-cols-2 gap-8">
+        <div>
+          <h3 class="font-display font-medium text-2xl">Animali Especialidades Veterinárias</h3>
+          <p class="text-tinta/60 mt-3">Jardim Tavares<br>Campina Grande — PB · CEP 58402-045</p>
+        </div>
+        <dl class="space-y-2 text-sm">
+          <div class="flex justify-between border-b border-linha pb-2"><dt class="font-semibold">Seg a Sex</dt><dd class="text-turquesa-600 font-semibold">8h às 18h</dd></div>
+          <div class="flex justify-between border-b border-linha pb-2"><dt class="font-semibold">Sábado</dt><dd class="text-turquesa-600 font-semibold">8h às 15h</dd></div>
+          <div class="flex justify-between"><dt class="font-semibold">Domingo</dt><dd class="text-tinta/50">Fechado</dd></div>
+        </dl>
+      </div>
+      <div class="px-7 pb-7 flex gap-3">
+        <button onclick="abrirModal('agendar')" class="flex-1 bg-tinta hover:bg-roxo text-white font-semibold py-3 rounded-sm transition text-sm">WhatsApp</button>
+        <a href="https://maps.app.goo.gl/HMdpxY6wfU2JrUgW6" target="_blank" rel="noopener" class="flex-1 border border-tinta/25 hover:border-tinta font-semibold py-3 rounded-sm transition text-sm text-center">Como chegar</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ══════════ DÚVIDAS ══════════ -->
+<section id="duvidas" class="py-20 md:py-28 bg-white border-y border-linha">
+  <div class="max-w-3xl mx-auto px-5">
+    <div class="text-center aparece">
+      <p class="text-roxo font-semibold tracking-[.2em] text-xs uppercase">Perguntas frequentes</p>
+      <h2 class="font-display font-medium text-3xl md:text-5xl mt-4">Dúvidas comuns</h2>
+    </div>
+    <div class="mt-12 divide-y divide-linha border-t border-b border-linha">
+      <details class="group py-2">
+        <summary class="cursor-pointer list-none px-2 py-5 font-medium flex items-center justify-between gap-4">Qual o horário de atendimento?<span class="text-roxo text-xl group-open:rotate-45 transition font-light">+</span></summary>
+        <p class="px-2 pb-5 text-tinta/60 leading-relaxed">Atendemos de segunda a sexta, das 8h às 18h, e aos sábados das 8h às 15h. Aos domingos ficamos fechados.</p>
+      </details>
+      <details class="group py-2">
+        <summary class="cursor-pointer list-none px-2 py-5 font-medium flex items-center justify-between gap-4">Preciso agendar ou posso chegar direto?<span class="text-roxo text-xl group-open:rotate-45 transition font-light">+</span></summary>
+        <p class="px-2 pb-5 text-tinta/60 leading-relaxed">Recomendamos agendar pelo WhatsApp — assim garantimos o horário com a veterinária certa para o caso do seu pet.</p>
+      </details>
+      <details class="group py-2">
+        <summary class="cursor-pointer list-none px-2 py-5 font-medium flex items-center justify-between gap-4">Vocês fazem cirurgia e exames no local?<span class="text-roxo text-xl group-open:rotate-45 transition font-light">+</span></summary>
+        <p class="px-2 pb-5 text-tinta/60 leading-relaxed">Sim. Fazemos cirurgias, coleta de sangue e exames laboratoriais na própria clínica, com acompanhamento da equipe.</p>
+      </details>
+      <details class="group py-2">
+        <summary class="cursor-pointer list-none px-2 py-5 font-medium flex items-center justify-between gap-4">Vocês têm loja de produtos?<span class="text-roxo text-xl group-open:rotate-45 transition font-light">+</span></summary>
+        <p class="px-2 pb-5 text-tinta/60 leading-relaxed">Sim, trabalhamos com ração, petiscos, perfumaria e acessórios no mesmo espaço da clínica.</p>
+      </details>
+      <details class="group py-2">
+        <summary class="cursor-pointer list-none px-2 py-5 font-medium flex items-center justify-between gap-4">Quais formas de pagamento vocês aceitam?<span class="text-roxo text-xl group-open:rotate-45 transition font-light">+</span></summary>
+        <p class="px-2 pb-5 text-tinta/60 leading-relaxed">Pix, dinheiro e cartões de débito e crédito.</p>
+      </details>
+    </div>
+    <p class="text-center text-xs text-tinta/35 mt-10">⚠️ Respostas de exemplo — confirmar cada uma com o cliente antes de publicar.</p>
+  </div>
+</section>
+
+<!-- ══════════ CTA FINAL ══════════ -->
+<section class="py-24 bg-papel">
+  <div class="max-w-3xl mx-auto px-5 text-center aparece">
+    <div class="w-10 h-px bg-roxo mx-auto"></div>
+    <h2 class="font-display font-medium text-3xl md:text-5xl leading-tight text-tinta mt-8">Bora cuidar do seu pet<br>com quem entende?</h2>
+    <p class="text-tinta/60 text-lg mt-5">Chame a gente no WhatsApp e agende em menos de um minuto.</p>
+    <button onclick="abrirModal('agendar')" class="mt-9 inline-flex items-center gap-2 bg-tinta hover:bg-roxo text-white font-semibold text-lg px-10 py-4 rounded-sm transition">
+      Agendar pelo WhatsApp
+    </button>
+  </div>
+</section>
+
+<!-- ══════════ RODAPÉ ══════════ -->
+<footer class="bg-white border-t border-linha text-tinta/70">
+  <div class="max-w-6xl mx-auto px-5 py-14 grid md:grid-cols-4 gap-10">
+    <div class="md:col-span-2">
+      <p class="font-display font-medium text-2xl text-tinta">Animali</p>
+      <p class="text-sm mt-4 max-w-sm leading-relaxed">Especialidades Veterinárias — Clínica e Pet Shop no Jardim Tavares, Campina Grande — PB. Consultas, cirurgias, reprodução animal, exames e produtos.</p>
+      <div class="flex gap-3 mt-6">
+        <a href="https://www.instagram.com/animalicg/" target="_blank" rel="noopener" class="w-9 h-9 border border-linha hover:border-roxo hover:text-roxo grid place-items-center transition" aria-label="Instagram">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4 1 .5.4.8.8 1 1.4.2.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-1 1.4-.4.5-.8.8-1.4 1-.4.2-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-1-.5-.4-.8-.8-1-1.4-.2-.4-.3-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 1-1.4.4-.5.8-.8 1.4-1 .4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2m0 5.3a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9m0 7.4a2.9 2.9 0 1 1 0-5.8 2.9 2.9 0 0 1 0 5.8m5.7-7.6a1.1 1.1 0 1 1-2.1 0 1.1 1.1 0 0 1 2.1 0"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <h3 class="text-tinta font-display font-medium text-lg">Serviços</h3>
+      <ul class="mt-4 space-y-2 text-sm">
+        <li><a href="#servicos" class="hover:text-roxo transition">Consultas</a></li>
+        <li><a href="#servicos" class="hover:text-roxo transition">Cirurgias</a></li>
+        <li><a href="#servicos" class="hover:text-roxo transition">Reprodução Animal</a></li>
+        <li><a href="#servicos" class="hover:text-roxo transition">Exames</a></li>
+        <li><a href="#loja" class="hover:text-roxo transition">Pet Shop</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-tinta font-display font-medium text-lg">Atendimento</h3>
+      <ul class="mt-4 space-y-3 text-sm">
+        <li><strong class="text-tinta block">Seg a Sex</strong>8h às 18h</li>
+        <li><strong class="text-tinta block">Sábado</strong>8h às 15h</li>
+        <li><button onclick="abrirModal('agendar')" class="hover:text-roxo underline underline-offset-2">Falar no WhatsApp</button></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-linha">
+    <div class="max-w-6xl mx-auto px-5 py-6 text-xs text-tinta/40 flex flex-col sm:flex-row justify-between gap-2">
+      <p>© 2026 Animali Especialidades Veterinárias — Campina Grande, PB.</p>
+      <p>Feito para quem ama bicho.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ BOTÃO FLUTUANTE ══════════ -->
+<button onclick="abrirModal('agendar')" class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20BA5A] text-white shadow-[0_10px_30px_-12px_rgba(0,0,0,.35)] grid place-items-center transition hover:scale-105" aria-label="Falar no WhatsApp">
+  <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.8-.9-2-1s-.5-.2-.7.1-.8 1-.9 1.2-.3.2-.6.1a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.5.1-.6l.5-.6.3-.5v-.5l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4a3.2 3.2 0 0 0-1 2.4A5.6 5.6 0 0 0 7.3 12a12.7 12.7 0 0 0 4.9 4.3c.7.3 1.2.5 1.6.6a3.9 3.9 0 0 0 1.8.1 3 3 0 0 0 2-1.4 2.4 2.4 0 0 0 .2-1.4l-.3-.2M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2z"/></svg>
+</button>
+
+<!-- ══════════ MODAL ══════════ -->
+<div id="modal" class="hidden fixed inset-0 z-50 items-center justify-center p-4 bg-tinta/40 backdrop-blur-sm" onclick="if(event.target===this)fecharModal()">
+  <div class="bg-white rounded-sm max-w-md w-full p-7 border border-linha">
+    <div class="flex items-start justify-between gap-4">
+      <div>
+        <h3 class="font-display font-medium text-2xl" id="modalTitulo">Falar com a Animali</h3>
+        <p class="text-tinta/55 text-sm mt-1" id="modalTexto">Você será direcionado para o WhatsApp da clínica:</p>
+      </div>
+      <button onclick="fecharModal()" class="w-9 h-9 shrink-0 grid place-items-center text-2xl leading-none text-tinta/45" aria-label="Fechar">×</button>
+    </div>
+    <div class="mt-6 space-y-3" id="modalBotoes"></div>
+    <p class="text-xs text-tinta/35 mt-6 text-center">Atendimento de segunda a sábado, dentro do horário de funcionamento.</p>
+  </div>
+</div>
+
+<script src="/conteudo.js"></script>
+<script>
+const WHATSAPP_LINK = 'https://wa.me/558398020927';
+
+const MENSAGENS = {
+  agendar:    { titulo: 'Agendar consulta',        texto: 'Você será direcionado para o WhatsApp da clínica:', msg: 'Olá! Vim pelo site e gostaria de agendar uma consulta para o meu pet.' },
+  consulta:   { titulo: 'Marcar consulta',         texto: 'Você será direcionado para o WhatsApp da clínica:', msg: 'Olá! Vim pelo site e gostaria de marcar uma consulta veterinária.' },
+  cirurgia:   { titulo: 'Falar sobre cirurgia',    texto: 'Você será direcionado para o WhatsApp da clínica:', msg: 'Olá! Vim pelo site e queria saber mais sobre cirurgias.' },
+  reproducao: { titulo: 'Reprodução Animal',       texto: 'Você será direcionado para o WhatsApp da clínica:', msg: 'Olá! Vim pelo site e queria saber mais sobre reprodução animal.' },
+  exame:      { titulo: 'Agendar exame',           texto: 'Você será direcionado para o WhatsApp da clínica:', msg: 'Olá! Vim pelo site e queria agendar a coleta de sangue/exames do meu pet.' },
+  produto:    { titulo: 'Consultar produto',       texto: 'Você será direcionado para o WhatsApp da clínica:', msg: 'Olá! Vim pelo site e queria consultar um produto.' },
+};
+
+function abrirModal(tipo) {
+  const cfg = MENSAGENS[tipo] || MENSAGENS.agendar;
+  document.getElementById('modalTitulo').textContent = cfg.titulo;
+  document.getElementById('modalTexto').textContent = cfg.texto;
+  document.getElementById('modalBotoes').innerHTML = `
+    <button onclick="abrirWhats(${JSON.stringify(cfg.msg)})"
+      class="w-full text-left px-5 py-4 border border-linha hover:border-roxo transition flex items-center justify-between gap-3 group">
+      <span>
+        <span class="font-semibold block">Animali — Jardim Tavares</span>
+        <span class="text-sm text-tinta/55">Fale direto com a equipe</span>
+      </span>
+      <span class="text-roxo font-semibold text-xl group-hover:translate-x-1 transition">→</span>
+    </button>`;
+  const m = document.getElementById('modal');
+  m.classList.remove('hidden'); m.classList.add('flex');
+  document.body.style.overflow = 'hidden';
+}
+function fecharModal() {
+  const m = document.getElementById('modal');
+  m.classList.add('hidden'); m.classList.remove('flex');
+  document.body.style.overflow = '';
+}
+function abrirWhats(msg) {
+  window.open(`${WHATSAPP_LINK}?text=${encodeURIComponent(msg)}`, '_blank');
+  fecharModal();
+}
+function menuMobile() { document.getElementById('menuMob').classList.toggle('hidden'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
+
+/* ---------- ABERTO/FECHADO AGORA ---------- */
+(function status() {
+  const agora = new Date();
+  const dia = agora.getDay();
+  const min = agora.getHours() * 60 + agora.getMinutes();
+  let aberto = false;
+  if (dia >= 1 && dia <= 5) aberto = min >= 8 * 60 && min < 18 * 60;
+  else if (dia === 6) aberto = min >= 8 * 60 && min < 15 * 60;
+
+  document.querySelectorAll('#pontoStatus, #pontoStatus2, #iconeStatus').forEach(el => {
+    el.querySelectorAll('span').forEach(s => {
+      s.classList.remove('bg-turquesa'); s.classList.add(aberto ? 'bg-turquesa' : 'bg-tinta/40');
+      if (!aberto) s.classList.remove('animate-ping');
+    });
+  });
+  document.querySelectorAll('#textoStatus').forEach(el => {
+    el.textContent = aberto ? 'Aberto agora' : 'Fechado no momento';
+    el.classList.toggle('text-turquesa-600', aberto);
+    el.classList.toggle('text-tinta/60', !aberto);
+  });
+  const tituloStatus = document.getElementById('tituloStatus');
+  if (tituloStatus) tituloStatus.textContent = aberto ? 'Aberto agora' : 'Fechado agora';
+  const tituloStatus2 = document.getElementById('tituloStatus2');
+  if (tituloStatus2) tituloStatus2.textContent = aberto ? 'ABERTO AGORA' : 'FECHADO AGORA';
+})();
+
+/* ---------- AÇÕES DO MÊS ---------- */
+const CORES = {
+  roxo:     { selo: 'text-roxo border-roxo/30' },
+  turquesa: { selo: 'text-turquesa-600 border-turquesa/30' },
+  ameixa:   { selo: 'text-tinta border-tinta/30' },
+};
+const MESES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+(function montarCampanhas() {
+  const grade = document.getElementById('gradeCampanhas');
+  const rotulo = document.getElementById('mesAtual');
+  if (!grade || typeof CAMPANHAS === 'undefined') return;
+  const hoje = new Date();
+  if (rotulo) rotulo.textContent = `${MESES[hoje.getMonth()]} de ${hoje.getFullYear()}`;
+
+  grade.innerHTML = CAMPANHAS.map(c => {
+    const cor = CORES[c.cor] || CORES.roxo;
+    return `
+    <article class="grupo-foto aparece border border-linha hover:border-tinta/30 transition flex flex-col">
+      <div class="foto aspect-[4/3] overflow-hidden relative">
+        <img src="${c.img}" alt="${c.titulo}" class="w-full h-full object-cover" onerror="this.remove()">
+        <span class="absolute top-4 left-4 bg-white/95 ${cor.selo} border text-[11px] font-bold tracking-wider uppercase px-3 py-1">${c.selo}</span>
+      </div>
+      <div class="p-7 flex flex-col flex-1">
+        <h3 class="font-display font-medium text-xl leading-snug">${c.titulo}</h3>
+        <p class="text-tinta/60 mt-3 leading-relaxed flex-1 text-sm">${c.texto}</p>
+        ${c.condicao ? `<p class="text-[11px] text-tinta/40 mt-4 leading-relaxed">${c.condicao}</p>` : ''}
+        <button onclick="abrirWhats(${JSON.stringify(c.msg)})" class="mt-6 border border-tinta/25 hover:border-tinta font-semibold py-3 transition text-sm">${c.botao}</button>
+      </div>
+    </article>`;
+  }).join('');
+})();
+
+/* ---------- VÍDEOS ---------- */
+(function montarVideos() {
+  const grade = document.getElementById('gradeVideos');
+  if (!grade || typeof VIDEOS === 'undefined') return;
+  grade.innerHTML = VIDEOS.map((v) => `
+    <div class="video-card aparece group relative block overflow-hidden aspect-[9/16] border border-linha">
+      <video class="w-full h-full object-cover cursor-pointer" data-src="${v.src}" muted loop playsinline preload="none" onclick="alternarSom(this)"></video>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none"></div>
+      <button type="button" onclick="alternarSom(this.previousElementSibling.previousElementSibling)" aria-label="Ativar ou desativar o som" class="botao-som absolute top-3 right-3 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 backdrop-blur grid place-items-center text-white">
+        <svg class="icone-mudo w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M16.5 12A4.5 4.5 0 0 0 14 8v2.2l2.4 2.4c.06-.2.1-.4.1-.6zm2.5 0a6.9 6.9 0 0 1-.6 2.8l1.5 1.5A9 9 0 0 0 21 12c0-4.1-2.8-7.6-6.6-8.7v2.1A7 7 0 0 1 19 12zM4.3 3 3 4.3 7 8.3H3v7.4h4l5 4V13.3l4.2 4.2c-.6.5-1.3.9-2.2 1.2v2.1c1.4-.3 2.7-1 3.7-1.9l2 2 1.3-1.3L4.3 3zM12 4l-2.2 2.2L12 8.4V4z"/></svg>
+        <svg class="icone-com-som hidden w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M3 8.3v7.4h4l5 4V4.3l-5 4H3zm13.5 3.7a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.3v2.1c3.4 1 6 4.4 6 8.6s-2.6 7.6-6 8.6v2.1c4.6-1 8-5.1 8-10.7s-3.4-9.7-8-10.7z"/></svg>
+      </button>
+      <div class="absolute bottom-0 inset-x-0 p-4 pointer-events-none">
+        <p class="font-display font-medium text-white leading-tight text-sm">${v.titulo}</p>
+        <p class="text-white/70 text-xs mt-0.5">${v.legenda}</p>
+      </div>
+      <a href="https://www.instagram.com/reel/${v.reel}/" target="_blank" rel="noopener" aria-label="Ver no Instagram" class="absolute bottom-3 right-3 w-7 h-7 rounded-full bg-white/90 backdrop-blur grid place-items-center text-roxo hover:bg-white transition">
+        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4 1 .5.4.8.8 1 1.4.2.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-1 1.4-.4.5-.8.8-1.4 1-.4.2-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-1-.5-.4-.8-.8-1-1.4-.2-.4-.3-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 1-1.4.4-.5.8-.8 1.4-1 .4-.2 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2m0 5.3a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9m0 7.4a2.9 2.9 0 1 1 0-5.8 2.9 2.9 0 0 1 0 5.8m5.7-7.6a1.1 1.1 0 1 1-2.1 0 1.1 1.1 0 0 1 2.1 0"/></svg>
+      </a>
+    </div>`).join('');
+
+  const videos = grade.querySelectorAll('video[data-src]');
+  const obsVideo = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const vid = entry.target;
+      if (entry.isIntersecting) {
+        if (!vid.src) vid.src = vid.dataset.src;
+        vid.play().catch(() => {});
+      } else {
+        vid.pause();
+      }
+    });
+  }, { threshold: .4 });
+  videos.forEach(vid => obsVideo.observe(vid));
+})();
+
+function alternarSom(video) {
+  if (!video) return;
+  document.querySelectorAll('.video-card video').forEach(v => { if (v !== video) v.muted = true; });
+  video.muted = !video.muted;
+  const botao = video.parentElement.querySelector('.botao-som');
+  botao.querySelector('.icone-mudo').classList.toggle('hidden', !video.muted);
+  botao.querySelector('.icone-com-som').classList.toggle('hidden', video.muted);
+}
+
+/* ---------- ANIMAÇÃO DE ENTRADA ---------- */
+const revelarTudo = () => document.querySelectorAll('.aparece').forEach(el => el.classList.add('visivel'));
+if ('IntersectionObserver' in window) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visivel'); obs.unobserve(e.target); } });
+  }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.aparece').forEach(el => obs.observe(el));
+  setTimeout(revelarTudo, 2500);
+} else {
+  revelarTudo();
+}
+</script>
+</body>
+</html>

@@ -52,40 +52,30 @@ const CAMPANHAS = [
 ];
 
 /* ---------- VÍDEOS DO INSTAGRAM ----------
-   Para cada vídeo, informe o CÓDIGO do reel em `reel` — o vídeo toca
-   dentro do site, num player que abre por cima da página.
+   Os vídeos tocam direto no site (arquivo local em assets/videos/),
+   em loop, mudo e sem foto de capa — a pessoa clica pra ativar o som.
+   `reel` é só o código do post, usado no link "Ver no Instagram".
 
-   Como pegar o código: abra o reel no Instagram → Compartilhar →
-   "Copiar link". Do link `instagram.com/reel/DcI_3EBRs50/`, o código
-   é o `DcI_3EBRs50` (pode ignorar o que vem depois do `?`).
-
-   ⚠️ Os 2 primeiros cards já usam reels reais. Os 2 últimos ainda usam
-   `url` e abrem o perfil de reels do Instagram — trocar por
-   `reel: 'codigo'` assim que tiver os vídeos.
+   Pra trocar/adicionar um vídeo: baixe o .mp4 do reel, salve em
+   assets/videos/ e aponte o `src` pra ele.
 ------------------------------------------- */
 const VIDEOS = [
   {
     reel: 'DaiUnSnhwIO',
-    capa: 'https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?auto=format&fit=crop&w=600&q=70',
+    src: '/assets/videos/cuidado-especializado.mp4',
     titulo: 'Cuidado especializado',
     legenda: 'Conheça a nossa equipe',
   },
   {
     reel: 'DaTR800xZbY',
-    capa: 'https://images.unsplash.com/photo-1591946614720-90a587da4a36?auto=format&fit=crop&w=600&q=70',
+    src: '/assets/videos/coleta-de-sangue.mp4',
     titulo: 'Coleta de sangue',
     legenda: 'Com o mínimo de estresse',
   },
   {
-    url: 'https://www.instagram.com/animalicg/reels/',
-    capa: 'https://images.unsplash.com/photo-1587764379873-97837921fd44?auto=format&fit=crop&w=600&q=70',
-    titulo: 'Dia Mundial do Cachorro',
-    legenda: 'Um dia só pra celebrar quem alegra os nossos',
-  },
-  {
-    url: 'https://www.instagram.com/animalicg/reels/',
-    capa: 'https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?auto=format&fit=crop&w=600&q=70',
-    titulo: 'Quando a vet vai embora',
-    legenda: 'O bastidor mais fofo do consultório',
+    reel: 'DcR4xt7sh-F',
+    src: '/assets/videos/reel-novo.mp4',
+    titulo: 'Direto da Animali', // ajustar título/legenda pelo conteúdo real do vídeo
+    legenda: 'Mais um pouco do nosso dia a dia',
   },
 ];
