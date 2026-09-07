@@ -648,7 +648,7 @@ function abrirModal(tipo) {
   document.getElementById('modalTitulo').textContent = cfg.titulo;
   document.getElementById('modalTexto').textContent = cfg.texto;
   document.getElementById('modalBotoes').innerHTML = `
-    <button onclick="abrirWhats(${JSON.stringify(cfg.msg)})"
+    <button onclick='abrirWhats(${JSON.stringify(cfg.msg)})'
       class="w-full text-left px-5 py-4 rounded-2xl border-4 border-roxo-100 hover:border-roxo bg-roxo-50 transition flex items-center justify-between gap-3 group">
       <span>
         <span class="font-bold block">Animali — Jardim Tavares</span>
@@ -733,7 +733,7 @@ const MESES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Ag
         <h3 class="font-display font-bold text-xl leading-snug">${c.titulo}</h3>
         <p class="text-ameixa/65 mt-3 leading-relaxed flex-1 font-medium">${c.texto}</p>
         ${c.condicao ? `<p class="text-[11px] text-ameixa/40 mt-4 leading-relaxed">${c.condicao}</p>` : ''}
-        <button onclick="abrirWhats(${JSON.stringify(c.msg)})" class="mt-6 ${cor.botao} text-white font-bold py-3.5 rounded-full transition">${c.botao}</button>
+        <button onclick='abrirWhats(${JSON.stringify(c.msg)})' class="mt-6 ${cor.botao} text-white font-bold py-3.5 rounded-full transition">${c.botao}</button>
       </div>
     </article>`;
   }).join('');
